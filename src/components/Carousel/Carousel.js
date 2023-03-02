@@ -8,44 +8,19 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 const Carousel = () => {
 
     const data = [
-        {
-            id: 1,
-            image: "https://m.media-amazon.com/images/I/81EZPF-FSdL._SX3000_.jpg",
-            name: "Plants"
-        },
-        {
-            id: 1,
-            image: "https://m.media-amazon.com/images/I/81OCE7mUqhL._SX3000_.jpg",
-            name: "Headphones"
-        },
-        {
-            id: 1,
-            image: "https://m.media-amazon.com/images/I/81KqtuapUzL._SX3000_.jpg",
-            name: "Groceries"
-        },
+        'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
+        'https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg',
+        'https://imgv3.fotor.com/images/blog-cover-image/part-blurry-image.jpg'
     ]
 
-    const [index, setIndex] = useState(0);
-    const [currentImage, setCurrentImage] = useState(data[0].image);
-
-    function showNextImage() {
-        if (index === data.length -1) {
-            setCurrentImage(data[0].image);
-            setIndex(0);
-            return;
-        }
-        setCurrentImage(data[index+1].image);
-        setIndex(index+1);
-    }
+    const [currentImage, setCurrentImage] = useState(0)
 
     function showPreviousImage() {
-        if (index === 0) {
-            setCurrentImage(data[data.length - 1].image);
-            setIndex(data.length-1);
-            return;
-        }
-        setCurrentImage(data[index-1].image);
-        setIndex(index-1);
+        setCurrentImage((data[currentImage] - 1) + data.length)
+    }
+
+    function showNextImage() {
+        setCurrentImage(data[currentImage] + 1)
     }
 
   return (
